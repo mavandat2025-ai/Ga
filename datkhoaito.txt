@@ -1,0 +1,80 @@
+-- ====================================
+-- GUI MENU + AUTO QUEST + AUTO FARM
+-- BLOX FRUITS SEA 2 + SEA 3
+-- ====================================
+
+local Players = game:GetService("Players")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local player = Players.LocalPlayer
+
+-- =====================
+-- BẬT / TẮT
+-- =====================
+getgenv().AutoQuest = false
+getgenv().AutoFarm  = false
+
+-- =====================
+-- GUI
+-- =====================
+local ScreenGui = Instance.new("ScreenGui", player.PlayerGui)
+ScreenGui.Name = "BloxFruitMenu"
+
+local Frame = Instance.new("Frame", ScreenGui)
+Frame.Size = UDim2.new(0, 260, 0, 200)
+Frame.Position = UDim2.new(0.5, -130, 0.5, -100)
+Frame.BackgroundColor3 = Color3.fromRGB(30,30,30)
+Frame.Active = true
+Frame.Draggable = true
+
+-- =====================
+-- ẢNH MENU (ID ẢNH)
+-- =====================
+local Image = Instance.new("ImageLabel", Frame)
+Image.Size = UDim2.new(0, 60, 0, 60)
+Image.Position = UDim2.new(0, 10, 0, 10)
+Image.BackgroundTransparency = 1
+Image.Image = "rbxassetid://12893087033" -- 🔴 IMAGE_ID_HERE
+
+-- =====================
+-- TITLE
+-- =====================
+local Title = Instance.new("TextLabel", Frame)
+Title.Size = UDim2.new(1, -80, 0, 30)
+Title.Position = UDim2.new(0, 80, 0, 20)
+Title.Text = "Trade scam HUB"
+SubTitle = "by_mavandat2013 VIP Pro",              --  i m� t ph
+TabWidth = 157,
+Size = UDim2.fromOffset(450, 300),
+Acrylic = true,
+Title.TextColor3 = Color3.new(1,1,1)
+Title.BackgroundTransparency = 1
+Title.TextScaled = true
+
+-- =====================
+-- NÚT AUTO QUEST
+-- =====================
+local QuestBtn = Instance.new("TextButton", Frame)
+QuestBtn.Size = UDim2.new(0.9, 0, 0, 40)
+QuestBtn.Position = UDim2.new(0.05, 0, 0, 90)
+QuestBtn.Text = "Auto Freeze : OFF"
+QuestBtn.BackgroundColor3 = Color3.fromRGB(60,60,60)
+QuestBtn.TextColor3 = Color3.new(1,1,1)
+
+QuestBtn.MouseButton1Click:Connect(function()
+    getgenv().AutoQuest = not getgenv().AutoQuest
+    QuestBtn.Text = "Auto Quest : "..(getgenv().AutoQuest and "ON" or "OFF")
+end)
+
+-- =====================
+-- NÚT AUTO FARM
+-- =====================
+local FarmBtn = Instance.new("TextButton", Frame)FarmBtn.Size = UDim2.new(0.9, 0, 0, 40)
+FarmBtn.Position = UDim2.new(0.05, 0, 0, 140)
+FarmBtn.Text = "Auto Accept : OFF"
+FarmBtn.BackgroundColor3 = Color3.fromRGB(60,60,60)
+FarmBtn.TextColor3 = Color3.new(1,1,1)
+
+FarmBtn.MouseButton1Click:Connect(function()
+    getgenv().AutoFarm = not getgenv().AutoFarm
+    FarmBtn.Text = "Auto Farm : "..(getgenv().AutoFarm and "ON" or "OFF")
+end)
